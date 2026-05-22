@@ -50,7 +50,7 @@ export function HeroSection() {
           className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur"
         >
           <Sparkles className="h-3.5 w-3.5 text-accent" />
-          Tahun Ajaran 2024/2025
+          Tahun Ajaran 2026/2027
         </motion.div>
 
         <motion.h1
@@ -64,7 +64,7 @@ export function HeroSection() {
           variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
           className="mt-6 text-base font-medium text-foreground/90 sm:text-lg"
         >
-          Rekayasa Perangkat Lunak — SMKN [Nama Sekolah]
+          Rekayasa Perangkat Lunak — SMKN 8 Malang
         </motion.p>
 
         <motion.p
