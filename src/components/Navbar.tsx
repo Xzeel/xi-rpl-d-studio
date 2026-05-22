@@ -5,10 +5,10 @@ import { Code2, Menu, X } from "lucide-react";
 const links = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
-  { href: "#wali-kelas", label: "Wali Kelas" },
-  { href: "#struktur", label: "Struktur" },
-  { href: "#anggota", label: "Anggota" },
-  { href: "#gallery", label: "Gallery" },
+  { href: "#wali-kelas", label: "Teacher" },
+  { href: "#struktur", label: "Structure" },
+  { href: "#anggota", label: "Members" },
+  { href: "#gallery", label: "Moments" },
 ];
 
 const spring = { type: "spring" as const, stiffness: 260, damping: 30, mass: 0.8 };
