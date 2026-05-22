@@ -15,7 +15,7 @@ export function Footer() {
         <div className="flex gap-3">
           {/* TODO: ganti dengan IG kelas */}
           <a
-            href="https://instagram.com/xirpld"
+            href="https://instagram.com/astarplderise_"
             target="_blank"
             rel="noopener noreferrer"
             className="flex h-10 w-10 items-center justify-center rounded-full ig-gradient text-white"
@@ -25,7 +25,7 @@ export function Footer() {
           </a>
         </div>
         <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} XI RPL D · Made with ♥ & lots of console.log()
+          © {new Date().getFullYear()} XI RPL D · Made with ♥ by XzeelArcadia
         </p>
       </div>
     </footer>
