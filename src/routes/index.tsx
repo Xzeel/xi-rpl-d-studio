@@ -11,9 +11,9 @@ import { Footer } from "@/components/Footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "XI RPL D — Rekayasa Perangkat Lunak" },
+      { title: "XI RPL D — Aetheria" },
       { name: "description", content: "Website resmi kelas XI RPL D — keluarga digital yang ngoding bareng. Kenalan sama anggota, struktur kelas, dan moments seru kami." },
-      { property: "og:title", content: "XI RPL D — Rekayasa Perangkat Lunak" },
+      { property: "og:title", content: "XI RPL D — Aetheria" },
       { property: "og:description", content: "Bukan sekadar kelas, tapi keluarga yang ngoding bareng." },
     ],
   }),
