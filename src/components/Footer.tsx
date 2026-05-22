@@ -10,7 +10,7 @@ export function Footer() {
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-accent">
             <Code2 className="h-4 w-4 text-primary-foreground" />
           </span>
-          XI RPL D
+          XI RPL D Aetheria
         </div>
         <div className="flex gap-3">
           {/* TODO: ganti dengan IG kelas */}
