@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { Code2, Menu, X } from "lucide-react";
+import { scrollToSection } from "@/lib/lenis";
+import { BGMButton } from "@/components/shared/BGMButton";
 
 const links = [
   { href: "#home", label: "Home" },
