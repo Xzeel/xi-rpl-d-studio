@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "motion/react";
-import { Volume2, VolumeX } from "lucide-react";
+import { VolumeX } from "lucide-react";
 import { useBGM } from "@/hooks/useBGM";
 
 interface BGMButtonProps {
@@ -61,5 +61,3 @@ export function BGMButton({ className = "" }: BGMButtonProps) {
 }
 
 export default BGMButton;
-// Volume2 imported for tree-shaking safety in case future use
-void Volume2;
