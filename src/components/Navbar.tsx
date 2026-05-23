@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { Code2, Menu, X } from "lucide-react";
+import { scrollToSection } from "@/lib/lenis";
+import { BGMButton } from "@/components/shared/BGMButton";
 
 const links = [
   { href: "#home", label: "Home" },
@@ -50,6 +52,10 @@ export function Navbar() {
           href="#home"
           layout
           transition={spring}
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection("home");
+          }}
           className="flex items-center gap-2 font-display font-bold"
           animate={{ fontSize: isScrolled ? 15 : 18 }}
         >
@@ -82,6 +88,10 @@ export function Navbar() {
                 href={l.href}
                 layout
                 transition={spring}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(l.href.replace("#", ""));
+                }}
                 animate={{
                   paddingLeft: isScrolled ? 12 : 16,
                   paddingRight: isScrolled ? 12 : 16,
@@ -97,13 +107,16 @@ export function Navbar() {
           </motion.div>
         </motion.div>
 
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 md:hidden"
-          aria-label="Menu"
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <BGMButton />
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 md:hidden"
+            aria-label="Menu"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
 
         <AnimatePresence>
           {open && (
@@ -120,7 +133,11 @@ export function Navbar() {
                   <a
                     key={l.href}
                     href={l.href}
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setOpen(false);
+                      scrollToSection(l.href.replace("#", ""));
+                    }}
                     className="rounded-lg px-4 py-3 text-sm text-muted-foreground hover:bg-white/5 hover:text-foreground"
                   >
                     {l.label}

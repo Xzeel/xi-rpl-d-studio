@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/sections/HeroSection";
@@ -7,6 +8,8 @@ import { StrukturSection } from "@/components/sections/StrukturSection";
 import { AnggotaSection } from "@/components/sections/AnggotaSection";
 import { GallerySection } from "@/components/sections/GallerySection";
 import { Footer } from "@/components/Footer";
+import ScrollVelocity from "@/components/shared/ScrollVelocity";
+import { createLenis } from "@/lib/lenis";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -21,11 +24,27 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const { destroy } = createLenis();
+    return destroy;
+  }, []);
+
   return (
     <div className="dark min-h-screen bg-background text-foreground">
       <Navbar />
       <main>
         <HeroSection />
+        <div className="relative -mt-8 mb-8 space-y-2 py-6">
+          <ScrollVelocity
+            texts={[
+              "XI RPL D ✦ CODE · CREATE · CONNECT ✦ SMKN 8 MALANG ✦",
+              "REKAYASA PERANGKAT LUNAK · 2026/2027 · KELUARGA NGODING ✦",
+            ]}
+            velocity={60}
+            className="font-display text-5xl font-black italic text-white/25 md:text-7xl"
+          />
+        </div>
         <AboutSection />
         <WaliKelasSection />
         <StrukturSection />

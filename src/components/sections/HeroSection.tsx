@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
+import TrueFocus from "@/components/shared/TrueFocus";
 
 const symbols = ["<", "/", ">", "{", "}", ";", "()", "[]", "=>"];
 
@@ -53,12 +54,19 @@ export function HeroSection() {
           Tahun Ajaran 2026/2027
         </motion.div>
 
-        <motion.h1
+        <motion.div
           variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
-          className="font-display text-6xl font-black tracking-tighter sm:text-7xl md:text-8xl lg:text-9xl"
+          className="font-display text-5xl tracking-tighter md:text-7xl lg:text-8xl"
         >
-          <span className="text-gradient">XI RPL D</span>
-        </motion.h1>
+          <TrueFocus
+            sentence="XI RPL D"
+            blurAmount={8}
+            borderColor="#60A5FA"
+            glowColor="rgba(96, 165, 250, 0.5)"
+            animationDuration={0.6}
+            pauseBetweenAnimations={1.2}
+          />
+        </motion.div>
 
         <motion.p
           variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
