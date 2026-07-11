@@ -14,9 +14,9 @@ import { createLenis } from "@/lib/lenis";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "XI RPL D — Aetheria" },
+      { title: "XI RPL D — Digiverse" },
       { name: "description", content: "Website resmi kelas XI RPL D — keluarga digital yang ngoding bareng. Kenalan sama anggota, struktur kelas, dan moments seru kami." },
-      { property: "og:title", content: "XI RPL D — Aetheria" },
+      { property: "og:title", content: "XI RPL D — Digiverse" },
       { property: "og:description", content: "Bukan sekadar kelas, tapi keluarga yang ngoding bareng." },
     ],
   }),
