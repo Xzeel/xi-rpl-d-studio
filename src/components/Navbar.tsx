@@ -67,7 +67,7 @@ export function Navbar() {
           >
             <Code2 className="h-4 w-4 text-primary-foreground" />
           </motion.span>
-          <span>XI RPL D AETHERIA</span>
+          <span>RPL-DIGIVERSE</span>
         </motion.a>
 
         <motion.div
