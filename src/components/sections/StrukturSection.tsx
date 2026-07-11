@@ -25,7 +25,7 @@ function RoleCard({ officer, highlight = false, delay = 0 }: { officer: Officer;
         highlight && "ring-2 ring-primary/50 shadow-[var(--shadow-glow)]",
       )}
     >
-      <Avatar name={officer.name} className={cn("rounded-full", highlight ? "h-20 w-20 text-xl" : "h-16 w-16")} />
+      <Avatar name={officer.name} className={cn("rounded-2xl", highlight ? "h-24 w-20 text-xl" : "h-20 w-16")} />
       <div className="mt-3 font-display text-sm font-bold leading-tight">{officer.name}</div>
       <span className={cn("mt-2 rounded-full px-3 py-0.5 text-[10px] font-semibold uppercase tracking-wide", categoryColors[officer.category])}>
         {officer.role}
