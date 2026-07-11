@@ -4,7 +4,7 @@ export interface Member {
   nis: string;
   gender: "L" | "P";
   igHandle: string;
-  avatarUrl?: string;
+  avatarUrl: string;
 }
 
 import abiWaqqashImg from '@/assets/students/abi.webp';
