@@ -20,11 +20,11 @@ export function WaliKelasSection() {
         >
           <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-start">
             <div className="relative shrink-0">
-              <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-primary to-accent opacity-40 blur-2xl" />
+              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-br from-primary to-accent opacity-40 blur-2xl" />
               <Avatar
                 name={teacher.name}
                 src={teacher.avatarUrl || undefined}
-                className="relative h-36 w-36 rounded-full border-4 border-white/10 text-3xl"
+                className="relative h-44 w-36 rounded-2xl border-4 border-white/10 text-3xl"
               />
             </div>
 

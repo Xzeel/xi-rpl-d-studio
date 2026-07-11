@@ -15,7 +15,7 @@ export function MemberCard({ member, index }: { member: Member; index: number })
       className="glass group flex flex-col items-center rounded-2xl p-5 text-center transition-shadow hover:shadow-[var(--shadow-glow)]"
     >
       <div className="relative">
-        <Avatar name={member.name} src={member.avatarUrl} className="h-24 w-24 rounded-full text-xl" />
+        <Avatar name={member.name} src={member.avatarUrl} className="h-28 w-24 rounded-2xl text-xl" />
         <span className="absolute -right-1 -top-1 rounded-full border-2 border-background bg-primary px-2 py-0.5 text-[10px] font-bold text-primary-foreground">
           {member.nis}
         </span>
