@@ -6,15 +6,14 @@ export interface Officer {
 }
 
 // TODO: replace with real data
-export const ketua: Officer = { name: "Adit Pratama Nugroho", role: "Ketua Kelas", category: "lead", igHandle: "adit.png" };
-export const wakil: Officer = { name: "Citra Ayu Lestari", role: "Wakil Ketua", category: "vice", igHandle: "citraayuu" };
+export const ketua: Officer = { name: "Fadhil Dwi Nugroho", role: "Ketua Kelas", category: "lead", igHandle: "dfadhil14" };
+export const wakil: Officer = { name: "Akbar Ramadhan Yasid", role: "Wakil Ketua", category: "vice", igHandle: "akbarramadhanyasid" };
 
 export const officers: Officer[] = [
-  { name: "Elina Rahmadhani", role: "Sekretaris 1", category: "secretary", igHandle: "elinarhmdn" },
-  { name: "Gita Permata Sari", role: "Sekretaris 2", category: "secretary", igHandle: "gitapermata" },
-  { name: "Indah Cahyani", role: "Bendahara 1", category: "treasurer", igHandle: "indah.cy" },
-  { name: "Kirana Maharani", role: "Bendahara 2", category: "treasurer", igHandle: "kiranamhr" },
-  { name: "Bagas Wicaksono", role: "Sie Kebersihan", category: "section", igHandle: "bagaswcks" },
-  { name: "Dimas Aryasatya", role: "Sie Keamanan", category: "section", igHandle: "dimasarya_" },
-  { name: "Faisal Hidayat", role: "Sie Humas", category: "section", igHandle: "faisal.hyt" },
+  { name: "Adinda Nabila P.S", role: "Sekretaris 1", category: "secretary", igHandle: "0nyndaa_" },
+  { name: "Navissa Naora Nadzillin", role: "Sekretaris 2", category: "secretary", igHandle: "navissa_naura" },
+  { name: "Satria Moreno Prasetya", role: "Bendahara 1", category: "treasurer", igHandle: "morenrenno" },
+  { name: "Navisya Salfa Saifunisa", role: "Bendahara 2", category: "treasurer", igHandle: "napiezzz" },
+  { name: "Audy Valencia", role: "Sie Kebersihan 1", category: "section", igHandle: "ccciaaw_" },
+  { name: "Galih Ajeng Ayuningtyas", role: "Sie Kebersihan 2", category: "section", igHandle: "xxaj3ngqq._" },
 ];
