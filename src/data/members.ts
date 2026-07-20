@@ -45,7 +45,7 @@ import farisImg from '@/assets/students/faris.webp';
 // TODO: replace with real data
 export const members: Member[] = [
   { id: 1, name: "Abi Waqqash", nis: "01", gender: "L", igHandle: "yoiki_4b111", avatarUrl: abiWaqqashImg },
-  { id: 2, name: "Achmad Miftakhul Haq", nis: "02", gender: "L", igHandle: "achmadmifta__", avatarUrl: miftaImg },
+  { id: 2, name: "Achmad Miftakhul Haq", nis: "02", gender: "L", igHandle: "achmad23m", avatarUrl: miftaImg },
   { id: 3, name: "Adinda Nabila P.S", nis: "03", gender: "P", igHandle: "0nyndaa_", avatarUrl: adindaNabilaImg },
   { id: 4, name: "Ahnaf Naufal Prawira", nis: "04", gender: "L", igHandle: "rennnfl", avatarUrl: naufalImg },
   { id: 5, name: "Aisyah Safa Azahrah", nis: "05", gender: "P", igHandle: "aisyhsafaa__", avatarUrl: aisyahSafaImg },
