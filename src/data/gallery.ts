@@ -9,7 +9,7 @@ export interface GalleryItem {
 
 // TODO: replace src with real photos
 export const gallery: GalleryItem[] = [
-  { id: 1, src: "", caption: "Upacara Bendera Senin Pagi", category: "Kegiatan Sekolah", aspectRatio: "landscape", color: "from-blue-500 to-indigo-600" },
+  { id: 1, src: "", caption: "Sponsor Pop Mie", category: "Momen Bareng", aspectRatio: "landscape", color: "from-blue-500 to-indigo-600" },
   { id: 2, src: "", caption: "Ngoding bareng pas jam kosong", category: "Momen Bareng", aspectRatio: "portrait", color: "from-purple-500 to-pink-600" },
   { id: 3, src: "", caption: "Juara 2 Lomba Web Design", category: "Prestasi", aspectRatio: "square", color: "from-amber-500 to-orange-600" },
   { id: 4, src: "", caption: "Class Meeting kompak banget", category: "Momen Bareng", aspectRatio: "landscape", color: "from-emerald-500 to-teal-600" },
