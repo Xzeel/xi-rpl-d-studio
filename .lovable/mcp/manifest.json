@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "sdk_version": "3.0.5",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "xi-rpl-d-studio",
+      "version": "0.1.0",
+      "title": "XI RPL D Studio"
+    },
+    "tools": [
+      {
+        "name": "list_members",
+        "title": "List class members",
+        "description": "List XI RPL D students, optionally filtered by name or gender.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "query": {
+              "description": "Part of a student's name to search for.",
+              "type": "string"
+            },
+            "gender": {
+              "description": "L for male, P for female.",
+              "type": "string",
+              "enum": [
+                "L",
+                "P"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_class_structure",
+        "title": "Get class structure",
+        "description": "Get the XI RPL D homeroom teacher and class officers.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "pick_random_student",
+        "title": "Pick random students",
+        "description": "Randomly pick one or more distinct XI RPL D students.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": false,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "count": {
+              "description": "How many students to pick (default 1).",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 31
+            }
+          },
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
