@@ -36,6 +36,8 @@
   --color-brand-glow: var(--brand-glow);
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
+  --color-wheel-teal: var(--wheel-teal);
+  --color-wheel-violet: var(--wheel-violet);
 
   --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
@@ -50,6 +52,8 @@
 
   --surface: oklch(0.22 0.035 260);
   --surface-elevated: oklch(0.26 0.04 260);
+  --wheel-teal: oklch(0.76 0.13 185);
+  --wheel-violet: oklch(0.75 0.13 295);
 
   --card: oklch(0.22 0.035 260);
   --card-foreground: oklch(0.98 0.005 250);
@@ -120,6 +124,25 @@
 }
 
 @layer utilities {
+  .winner-celebration { animation: winner-float 2.6s cubic-bezier(0.77, 0, 0.175, 1) infinite; }
+  .winner-celebration .winner-halo { animation: winner-ring 2.6s cubic-bezier(0.23, 1, 0.32, 1) infinite; }
+  .winner-name { animation: winner-shine 2.6s linear infinite; }
+  @keyframes winner-float {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-8px) rotate(2deg); }
+  }
+  @keyframes winner-ring {
+    0% { transform: scale(0.97); opacity: 0.7; }
+    100% { transform: scale(1.2); opacity: 0; }
+  }
+  @keyframes winner-shine {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.65; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .winner-celebration, .winner-celebration .winner-halo { animation: none; }
+    .winner-name { animation: winner-shine 4s linear infinite; }
+  }
   .glass {
     background-color: color-mix(in oklab, white 4%, transparent);
     backdrop-filter: blur(16px);

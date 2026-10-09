@@ -10,6 +10,7 @@ const links = [
   { href: "#wali-kelas", label: "Teacher" },
   { href: "#struktur", label: "Structure" },
   { href: "#anggota", label: "Members" },
+  { href: "#games", label: "Games" },
   { href: "#gallery", label: "Moments" },
 ];
 
@@ -30,7 +31,7 @@ export function Navbar() {
         layout
         transition={spring}
         animate={{
-          width: isScrolled ? "min(720px, 92vw)" : "100%",
+          width: isScrolled ? "min(860px, 96vw)" : "100%",
           marginTop: isScrolled ? 16 : 0,
           borderRadius: isScrolled ? 999 : 0,
           paddingLeft: isScrolled ? 16 : 24,
@@ -74,7 +75,7 @@ export function Navbar() {
           layout
           transition={spring}
           animate={{ gap: isScrolled ? 4 : 4 }}
-          className="hidden items-center md:flex"
+          className="hidden items-center lg:flex"
         >
           <motion.div
             layout
@@ -111,7 +112,7 @@ export function Navbar() {
           <BGMButton />
           <button
             onClick={() => setOpen((v) => !v)}
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 md:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 lg:hidden"
             aria-label="Menu"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -126,7 +127,7 @@ export function Navbar() {
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="absolute inset-x-0 top-full mt-2 overflow-hidden rounded-2xl border border-white/10 bg-background/95 backdrop-blur-xl md:hidden"
+              className="absolute inset-x-0 top-full mt-2 overflow-hidden rounded-2xl border border-white/10 bg-background/95 backdrop-blur-xl lg:hidden"
             >
               <nav className="flex flex-col gap-1 p-3">
                 {links.map((l) => (

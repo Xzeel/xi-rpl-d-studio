@@ -7,6 +7,7 @@ import { WaliKelasSection } from "@/components/sections/WaliKelasSection";
 import { StrukturSection } from "@/components/sections/StrukturSection";
 import { AnggotaSection } from "@/components/sections/AnggotaSection";
 import { GallerySection } from "@/components/sections/GallerySection";
+import { GamesSection } from "@/components/sections/GamesSection";
 import { Footer } from "@/components/Footer";
 import ScrollVelocity from "@/components/shared/ScrollVelocity";
 import { createLenis } from "@/lib/lenis";
@@ -18,6 +19,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Website resmi kelas XI RPL D — keluarga digital yang ngoding bareng. Kenalan sama anggota, struktur kelas, dan moments seru kami." },
       { property: "og:title", content: "XI RPL D — Digiverse" },
       { property: "og:description", content: "Bukan sekadar kelas, tapi keluarga yang ngoding bareng." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Index,
@@ -49,6 +52,7 @@ function Index() {
         <WaliKelasSection />
         <StrukturSection />
         <AnggotaSection />
+        <GamesSection />
         <GallerySection />
       </main>
       <Footer />
