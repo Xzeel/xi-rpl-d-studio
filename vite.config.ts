@@ -16,5 +16,13 @@ export default defineConfig({
   },
   vite: {
     plugins: [mcpPlugin(), nitro()],
+    // The MCP package optionally imports "cloudflare:workers" inside a try/catch
+    // (Cloudflare-only env lookup). Keep it external so non-Cloudflare builds
+    // like Vercel succeed; at runtime the import fails gracefully and falls back to process.env.
+    build: {
+      rollupOptions: {
+        external: ["cloudflare:workers"],
+      },
+    },
   },
 });
