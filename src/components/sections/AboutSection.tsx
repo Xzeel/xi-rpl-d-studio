@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
 import { CheckCircle2, Users, User, UserRound } from "lucide-react";
 import { members } from "@/data/members";
+import { InstagramButton } from "@/components/InstagramButton";
+
+const classIgHandle = "astarplderise_";
 
 function Counter({ to }: { to: number }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -85,6 +88,9 @@ export function AboutSection() {
               project deadline mepet. Dari hari pertama sampai sekarang, kami percaya: belajar
               ngoding paling seru kalau dilakuin bareng-bareng.
             </p>
+            <div className="mt-6">
+              <InstagramButton igHandle={classIgHandle} variant="handle" />
+            </div>
           </motion.div>
 
           <motion.ul

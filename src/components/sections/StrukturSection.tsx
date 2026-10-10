@@ -1,7 +1,5 @@
 import { motion } from "motion/react";
 import { SectionHeading } from "./AboutSection";
-import { Avatar } from "@/components/Avatar";
-import { InstagramButton } from "@/components/InstagramButton";
 import { ketua, wakil, officers, type Officer } from "@/data/officers";
 import { cn } from "@/lib/utils";
 
@@ -25,13 +23,11 @@ function RoleCard({ officer, highlight = false, delay = 0 }: { officer: Officer;
         highlight && "ring-2 ring-primary/50 shadow-[var(--shadow-glow)]",
       )}
     >
-      <Avatar name={officer.name} className={cn("rounded-2xl", highlight ? "h-24 w-20 text-xl" : "h-20 w-16")} />
-      <div className="mt-3 font-display text-sm font-bold leading-tight">{officer.name}</div>
       <span className={cn("mt-2 rounded-full px-3 py-0.5 text-[10px] font-semibold uppercase tracking-wide", categoryColors[officer.category])}>
         {officer.role}
       </span>
-      <div className="mt-3">
-        <InstagramButton igHandle={officer.igHandle} variant="icon" />
+      <div className={cn("mt-3 font-display font-bold leading-tight", highlight ? "text-xl" : "text-base")}>
+        {officer.name}
       </div>
     </motion.div>
   );

@@ -4,13 +4,32 @@ import { cn } from "@/lib/utils";
 
 interface Props {
   igHandle: string;
-  variant?: "full" | "icon";
+  variant?: "full" | "icon" | "handle";
   label?: string;
   className?: string;
 }
 
 export function InstagramButton({ igHandle, variant = "full", label = "Connect", className }: Props) {
   const href = `https://instagram.com/${igHandle}`;
+  if (variant === "handle") {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Instagram @${igHandle}`}
+        className={cn(
+          "group inline-flex items-center gap-3 rounded-full border border-border bg-surface/60 p-1.5 pr-5 text-sm font-semibold transition-colors hover:border-primary/50",
+          className,
+        )}
+      >
+        <span className="flex h-8 w-8 items-center justify-center rounded-full ig-gradient text-white">
+          <FontAwesomeIcon icon={faInstagram} className="h-4 w-4" />
+        </span>
+        <span className="text-muted-foreground transition-colors group-hover:text-foreground">@{igHandle}</span>
+      </a>
+    );
+  }
   if (variant === "icon") {
     return (
       <a
