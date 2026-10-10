@@ -1,6 +1,4 @@
 import { Code2 } from "lucide-react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 export function Footer() {
   return (
@@ -12,20 +10,22 @@ export function Footer() {
           </span>
           XI RPL DIGIVERSE
         </div>
-        <div className="flex gap-3">
-          {/* TODO: ganti dengan IG kelas */}
-          <a
-            href="https://instagram.com/astarplderise_"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex h-10 w-10 items-center justify-center rounded-full ig-gradient text-white"
-            aria-label="Instagram"
-          >
-            <FontAwesomeIcon icon={faInstagram} className="h-4 w-4" />
-          </a>
-        </div>
-        <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} XI RPL D · Made with ♥ by XzeelArcadia
+        <p className="flex flex-wrap items-center justify-center gap-y-2 text-xs text-muted-foreground">
+          <span>© {new Date().getFullYear()} XI RPL D</span>
+          <span aria-hidden="true" className="mx-6 select-none font-bold text-primary/70 sm:mx-10">
+            •
+          </span>
+          <span>
+            Made with <span className="text-primary">♥</span> by{" "}
+            <a
+              href="https://xzeelarcadia.my.id"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-foreground underline-offset-4 transition-colors hover:text-primary hover:underline"
+            >
+              XzeelArcadia
+            </a>
+          </span>
         </p>
       </div>
       <div
