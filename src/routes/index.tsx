@@ -7,6 +7,7 @@ import { WaliKelasSection } from "@/components/sections/WaliKelasSection";
 import { StrukturSection } from "@/components/sections/StrukturSection";
 import { AnggotaSection } from "@/components/sections/AnggotaSection";
 import { GallerySection } from "@/components/sections/GallerySection";
+import { BelovedPeopleSection } from "@/components/sections/BelovedPeopleSection";
 import { GamesSection } from "@/components/sections/GamesSection";
 import { Footer } from "@/components/Footer";
 import ScrollVelocity from "@/components/shared/ScrollVelocity";
@@ -54,6 +55,7 @@ function Index() {
         <AnggotaSection />
         <GamesSection />
         <GallerySection />
+        <BelovedPeopleSection />
       </main>
       <Footer />
     </div>
