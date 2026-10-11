@@ -1,4 +1,4 @@
-import { FolderFloat } from "@/components/shared/FolderFloat";
+import FolderFloat from "@/components/shared/FolderFloat";
 import { SectionHeading } from "./AboutSection";
 
 const belovedItems = ["Bu Anisa", "Bu Anisa", "Bu Anisa", "Bu Anisa"];
