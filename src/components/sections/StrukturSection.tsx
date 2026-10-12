@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { SectionHeading } from "./AboutSection";
-import { ketua, wakil, officers, type Officer } from "@/data/officers";
+import type { Officer } from "@/data/officers";
+import { useOfficers, type OfficerRow } from "@/hooks/useOfficers";
 import { cn } from "@/lib/utils";
 
 const categoryColors: Record<Officer["category"], string> = {
@@ -11,7 +12,7 @@ const categoryColors: Record<Officer["category"], string> = {
   section: "bg-pink-500/20 text-pink-300",
 };
 
-function RoleCard({ officer, highlight = false, delay = 0 }: { officer: Officer; highlight?: boolean; delay?: number }) {
+function RoleCard({ officer, highlight = false, delay = 0 }: { officer: OfficerRow; highlight?: boolean; delay?: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -23,7 +24,7 @@ function RoleCard({ officer, highlight = false, delay = 0 }: { officer: Officer;
         highlight && "ring-2 ring-primary/50 shadow-[var(--shadow-glow)]",
       )}
     >
-      <span className={cn("mt-2 rounded-full px-3 py-0.5 text-[10px] font-semibold uppercase tracking-wide", categoryColors[officer.category])}>
+      <span className={cn("mt-2 rounded-full px-3 py-0.5 text-[10px] font-semibold uppercase tracking-wide", categoryColors[officer.category] ?? categoryColors.section)}>
         {officer.role}
       </span>
       <div className={cn("mt-3 font-display font-bold leading-tight", highlight ? "text-xl" : "text-base")}>
@@ -38,6 +39,10 @@ function Connector({ className }: { className?: string }) {
 }
 
 export function StrukturSection() {
+  const { data = [] } = useOfficers();
+  const ketua = data.find((o) => o.category === "lead");
+  const wakil = data.find((o) => o.category === "vice");
+  const officers = data.filter((o) => o !== ketua && o !== wakil);
   return (
     <section id="struktur" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6">
@@ -46,14 +51,14 @@ export function StrukturSection() {
         <div className="mt-16 flex flex-col items-center">
           {/* Ketua */}
           <div className="w-full max-w-xs">
-            <RoleCard officer={ketua} highlight />
+            {ketua && <RoleCard officer={ketua} highlight />}
           </div>
 
           <Connector className="h-10" />
 
           {/* Wakil */}
           <div className="w-full max-w-xs">
-            <RoleCard officer={wakil} delay={0.1} />
+            {wakil && <RoleCard officer={wakil} delay={0.1} />}
           </div>
 
           <Connector className="h-10" />
@@ -63,7 +68,7 @@ export function StrukturSection() {
 
           <div className="mt-10 grid w-full grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
             {officers.map((o, i) => (
-              <RoleCard key={o.name} officer={o} delay={0.05 * i} />
+              <RoleCard key={o.id} officer={o} delay={0.05 * i} />
             ))}
           </div>
         </div>

@@ -1,25 +1,15 @@
 import { useState } from "react";
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
-import { Code2, Menu, X } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { motion, useMotionValueEvent, useScroll } from "motion/react";
+import { Code2, ShieldCheck } from "lucide-react";
 import { scrollToSection } from "@/lib/lenis";
 import { BGMButton } from "@/components/shared/BGMButton";
-
-const links = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#wali-kelas", label: "Teacher" },
-  { href: "#struktur", label: "Structure" },
-  { href: "#anggota", label: "Members" },
-  { href: "#games", label: "Games" },
-  { href: "#gallery", label: "Moments" },
-];
 
 const spring = { type: "spring" as const, stiffness: 260, damping: 30, mass: 0.8 };
 
 export function Navbar() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (y) => {
     setIsScrolled(y > 50);
@@ -71,83 +61,16 @@ export function Navbar() {
           <span>DIGIVERSE</span>
         </motion.a>
 
-        <motion.div
-          layout
-          transition={spring}
-          animate={{ gap: isScrolled ? 4 : 4 }}
-          className="hidden items-center lg:flex"
-        >
-          <motion.div
-            layout
-            transition={spring}
-            animate={{ gap: isScrolled ? 0 : 4 }}
-            className="flex items-center"
-          >
-            {links.map((l) => (
-              <motion.a
-                key={l.href}
-                href={l.href}
-                layout
-                transition={spring}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(l.href.replace("#", ""));
-                }}
-                animate={{
-                  paddingLeft: isScrolled ? 12 : 16,
-                  paddingRight: isScrolled ? 12 : 16,
-                  paddingTop: isScrolled ? 6 : 8,
-                  paddingBottom: isScrolled ? 6 : 8,
-                  fontSize: isScrolled ? 13 : 14,
-                }}
-                className="rounded-full text-muted-foreground hover:bg-white/5 hover:text-foreground"
-              >
-                {l.label}
-              </motion.a>
-            ))}
-          </motion.div>
-        </motion.div>
-
         <div className="flex items-center gap-2">
           <BGMButton />
-          <button
-            onClick={() => setOpen((v) => !v)}
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 lg:hidden"
-            aria-label="Menu"
+          <Link
+            to="/admin"
+            className="flex h-9 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 text-sm font-medium text-muted-foreground transition-colors hover:bg-white/10 hover:text-foreground"
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+            <ShieldCheck className="h-4 w-4" />
+            <span className="hidden sm:inline">Admin</span>
+          </Link>
         </div>
-
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              key="mobile-drawer"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              className="absolute inset-x-0 top-full mt-2 overflow-hidden rounded-2xl border border-white/10 bg-background/95 backdrop-blur-xl lg:hidden"
-            >
-              <nav className="flex flex-col gap-1 p-3">
-                {links.map((l) => (
-                  <a
-                    key={l.href}
-                    href={l.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setOpen(false);
-                      scrollToSection(l.href.replace("#", ""));
-                    }}
-                    className="rounded-lg px-4 py-3 text-sm text-muted-foreground hover:bg-white/5 hover:text-foreground"
-                  >
-                    {l.label}
-                  </a>
-                ))}
-              </nav>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </motion.nav>
     </div>
   );
