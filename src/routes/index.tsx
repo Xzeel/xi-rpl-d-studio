@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSection } from "@/components/sections/AboutSection";
+import { TaskCountdownSection } from "@/components/sections/TaskCountdownSection";
 import { WaliKelasSection } from "@/components/sections/WaliKelasSection";
 import { StrukturSection } from "@/components/sections/StrukturSection";
 import { AnggotaSection } from "@/components/sections/AnggotaSection";
@@ -49,6 +50,7 @@ function Index() {
             className="font-display text-5xl font-black italic text-white/25 md:text-7xl"
           />
         </div>
+        <TaskCountdownSection />
         <AboutSection />
         <WaliKelasSection />
         <StrukturSection />

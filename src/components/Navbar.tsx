@@ -64,7 +64,7 @@ export function Navbar() {
         <div className="flex items-center gap-2">
           <BGMButton />
           <Link
-            to="/admin"
+            to="/dashboard"
             className="flex h-9 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 text-sm font-medium text-muted-foreground transition-colors hover:bg-white/10 hover:text-foreground"
           >
             <ShieldCheck className="h-4 w-4" />
