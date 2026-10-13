@@ -44,6 +44,33 @@ export type Database = {
         }
         Relationships: []
       }
+      tasks: {
+        Row: {
+          created_at: string
+          description: string
+          due_at: string
+          id: string
+          subject: string
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string
+          due_at: string
+          id?: string
+          subject: string
+          title: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          due_at?: string
+          id?: string
+          subject?: string
+          title?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string

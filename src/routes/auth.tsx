@@ -34,7 +34,7 @@ function AuthPage() {
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     setLoading(false);
     if (error) return toast.error("Email atau password salah");
-    navigate({ to: "/admin" });
+    navigate({ to: "/dashboard" });
   }
 
   return (
