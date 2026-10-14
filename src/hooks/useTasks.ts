@@ -40,6 +40,21 @@ export function useSaveTask() {
   });
 }
 
+export function useUpdateTask() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async (input: TaskInput & { id: string }) => {
+      const { error } = await table().update(input).eq("id", input.id);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["tasks"] });
+      toast.success("Tugas diperbarui");
+    },
+    onError: (e: Error) => toast.error(e.message || "Gagal memperbarui"),
+  });
+}
+
 export function useDeleteTask() {
   const qc = useQueryClient();
   return useMutation({
