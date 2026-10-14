@@ -2,14 +2,14 @@ import { useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { format } from "date-fns";
-import { ArrowLeft, LogOut, Plus, Trash2 } from "lucide-react";
+import { ArrowLeft, LogOut, Pencil, Plus, Trash2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { useDeleteTask, useSaveTask, useTasks } from "@/hooks/useTasks";
+import { useDeleteTask, useSaveTask, useTasks, useUpdateTask } from "@/hooks/useTasks";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
@@ -28,14 +28,22 @@ export const Route = createFileRoute("/_authenticated/dashboard")({
 
 const empty = { subject: "", title: "", description: "", due: "" };
 
+function toLocalInput(iso: string) {
+  const d = new Date(iso);
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+
 function DashboardPage() {
   const { user } = Route.useRouteContext();
   const navigate = useNavigate();
   const qc = useQueryClient();
   const { data: tasks = [] } = useTasks();
   const save = useSaveTask();
+  const update = useUpdateTask();
   const del = useDeleteTask();
   const [form, setForm] = useState<typeof empty | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
 
   const { data: isAdmin, isLoading } = useQuery({
     queryKey: ["is-admin", user.id],
@@ -93,33 +101,67 @@ function DashboardPage() {
                 <div className="mt-2 font-semibold">{t.title}</div>
                 {t.description && <div className="text-sm text-muted-foreground">{t.description}</div>}
               </div>
-              <Button
-                size="icon"
-                variant="ghost"
-                aria-label="Hapus"
-                onClick={() => confirm(`Hapus tugas "${t.title}"?`) && del.mutate(t.id)}
-              >
-                <Trash2 className="h-4 w-4 text-destructive" />
-              </Button>
+              <div className="flex shrink-0 gap-1">
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  aria-label="Edit"
+                  onClick={() => {
+                    setEditingId(t.id);
+                    setForm({
+                      subject: t.subject,
+                      title: t.title,
+                      description: t.description,
+                      due: toLocalInput(t.due_at),
+                    });
+                  }}
+                >
+                  <Pencil className="h-4 w-4" />
+                </Button>
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  aria-label="Hapus"
+                  onClick={() => confirm(`Hapus tugas "${t.title}"?`) && del.mutate(t.id)}
+                >
+                  <Trash2 className="h-4 w-4 text-destructive" />
+                </Button>
+              </div>
             </div>
           ))}
         </div>
       )}
 
-      <Dialog open={!!form} onOpenChange={(v) => !v && setForm(null)}>
+      <Dialog
+        open={!!form}
+        onOpenChange={(v) => {
+          if (!v) {
+            setForm(null);
+            setEditingId(null);
+          }
+        }}
+      >
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Tambah Tugas</DialogTitle>
+            <DialogTitle>{editingId ? "Edit Tugas" : "Tambah Tugas"}</DialogTitle>
           </DialogHeader>
           {form && (
             <form
               className="space-y-4"
               onSubmit={(e) => {
                 e.preventDefault();
-                save.mutate(
-                  { subject: form.subject, title: form.title, description: form.description, due_at: new Date(form.due).toISOString() },
-                  { onSuccess: () => setForm(null) },
-                );
+                const payload = {
+                  subject: form.subject,
+                  title: form.title,
+                  description: form.description,
+                  due_at: new Date(form.due).toISOString(),
+                };
+                const onSuccess = () => {
+                  setForm(null);
+                  setEditingId(null);
+                };
+                if (editingId) update.mutate({ ...payload, id: editingId }, { onSuccess });
+                else save.mutate(payload, { onSuccess });
               }}
             >
               <div className="space-y-2">
@@ -138,8 +180,8 @@ function DashboardPage() {
                 <Label>Tenggat</Label>
                 <Input type="datetime-local" required value={form.due} onChange={(e) => setForm({ ...form, due: e.target.value })} />
               </div>
-              <Button type="submit" className="w-full rounded-full" disabled={save.isPending}>
-                {save.isPending ? "Menyimpan..." : "Simpan"}
+              <Button type="submit" className="w-full rounded-full" disabled={save.isPending || update.isPending}>
+                {save.isPending || update.isPending ? "Menyimpan..." : "Simpan"}
               </Button>
             </form>
           )}
