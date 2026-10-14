@@ -40,8 +40,10 @@ function DashboardPage() {
   const qc = useQueryClient();
   const { data: tasks = [] } = useTasks();
   const save = useSaveTask();
+  const update = useUpdateTask();
   const del = useDeleteTask();
   const [form, setForm] = useState<typeof empty | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
 
   const { data: isAdmin, isLoading } = useQuery({
     queryKey: ["is-admin", user.id],
@@ -99,14 +101,32 @@ function DashboardPage() {
                 <div className="mt-2 font-semibold">{t.title}</div>
                 {t.description && <div className="text-sm text-muted-foreground">{t.description}</div>}
               </div>
-              <Button
-                size="icon"
-                variant="ghost"
-                aria-label="Hapus"
-                onClick={() => confirm(`Hapus tugas "${t.title}"?`) && del.mutate(t.id)}
-              >
-                <Trash2 className="h-4 w-4 text-destructive" />
-              </Button>
+              <div className="flex shrink-0 gap-1">
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  aria-label="Edit"
+                  onClick={() => {
+                    setEditingId(t.id);
+                    setForm({
+                      subject: t.subject,
+                      title: t.title,
+                      description: t.description,
+                      due: toLocalInput(t.due_at),
+                    });
+                  }}
+                >
+                  <Pencil className="h-4 w-4" />
+                </Button>
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  aria-label="Hapus"
+                  onClick={() => confirm(`Hapus tugas "${t.title}"?`) && del.mutate(t.id)}
+                >
+                  <Trash2 className="h-4 w-4 text-destructive" />
+                </Button>
+              </div>
             </div>
           ))}
         </div>
