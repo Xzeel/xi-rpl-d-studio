@@ -4,3 +4,4 @@
 - The public MCP server lives in src/lib/mcp (one tool per file) and reads only the static class data; it exposes only data already shown on the public site.
 - Keep "cloudflare:workers" in vite build.rollupOptions.external; the MCP package imports it optionally and non-Cloudflare builds (Vercel/Nitro) fail to resolve it otherwise.
 - Class officers come from the Supabase `officers` table (static fallback, managed via SQL); class tasks come from the `tasks` table (public read, admin-only write) and are managed on /dashboard under the `_authenticated` gate.
+- Dashboard presentation uses a shared overview component and a client-side task filtering hook; summary counts classify tasks by deadline to match the public countdown without changing task storage.
