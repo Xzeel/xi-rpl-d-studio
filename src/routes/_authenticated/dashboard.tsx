@@ -132,20 +132,36 @@ function DashboardPage() {
         </div>
       )}
 
-      <Dialog open={!!form} onOpenChange={(v) => !v && setForm(null)}>
+      <Dialog
+        open={!!form}
+        onOpenChange={(v) => {
+          if (!v) {
+            setForm(null);
+            setEditingId(null);
+          }
+        }}
+      >
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Tambah Tugas</DialogTitle>
+            <DialogTitle>{editingId ? "Edit Tugas" : "Tambah Tugas"}</DialogTitle>
           </DialogHeader>
           {form && (
             <form
               className="space-y-4"
               onSubmit={(e) => {
                 e.preventDefault();
-                save.mutate(
-                  { subject: form.subject, title: form.title, description: form.description, due_at: new Date(form.due).toISOString() },
-                  { onSuccess: () => setForm(null) },
-                );
+                const payload = {
+                  subject: form.subject,
+                  title: form.title,
+                  description: form.description,
+                  due_at: new Date(form.due).toISOString(),
+                };
+                const onSuccess = () => {
+                  setForm(null);
+                  setEditingId(null);
+                };
+                if (editingId) update.mutate({ ...payload, id: editingId }, { onSuccess });
+                else save.mutate(payload, { onSuccess });
               }}
             >
               <div className="space-y-2">
@@ -164,8 +180,8 @@ function DashboardPage() {
                 <Label>Tenggat</Label>
                 <Input type="datetime-local" required value={form.due} onChange={(e) => setForm({ ...form, due: e.target.value })} />
               </div>
-              <Button type="submit" className="w-full rounded-full" disabled={save.isPending}>
-                {save.isPending ? "Menyimpan..." : "Simpan"}
+              <Button type="submit" className="w-full rounded-full" disabled={save.isPending || update.isPending}>
+                {save.isPending || update.isPending ? "Menyimpan..." : "Simpan"}
               </Button>
             </form>
           )}
