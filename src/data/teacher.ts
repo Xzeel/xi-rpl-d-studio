@@ -1,6 +1,5 @@
 import buAnisa from "@/assets/bu-anisa.webp";
 
-// TODO: replace with real data
 export const teacher = {
   name: "Anisa Istiqomah, S.Kom",
   subject: "Guru RPL",
