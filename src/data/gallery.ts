@@ -18,11 +18,11 @@ export interface GalleryItem {
 
 export const gallery: GalleryItem[] = [
   { id: 1, src: sponsorMie, caption: "Sponsor Pop Mie", category: "Momen Bareng", aspectRatio: "landscape", color: "from-blue-500 to-indigo-600" },
-  { id: 2, src: lombaHias, caption: "Lomba Hias Kelas Agustusan", category: "Momen Bareng", aspectRatio: "portrait", color: "from-purple-500 to-pink-600" },
+  { id: 2, src: lombaHias, caption: "Lomba Hias Kelas Agustusan #1", category: "Momen Bareng", aspectRatio: "portrait", color: "from-purple-500 to-pink-600" },
   { id: 3, src: juara2Hias, caption: "Juara 2 Lomba Hias Kelas", category: "Momen Bareng", aspectRatio: "landscape", color: "from-purple-500 to-pink-600" },
   { id: 4, src: peakDayAgustusan, caption: "Peak Day Agustusan #1", category: "Momen Bareng", aspectRatio: "landscape", color: "from-purple-500 to-pink-600" },
   { id: 5, src: peakDayAgustusan2, caption: "Peak Day Agustusan #2", category: "Momen Bareng", aspectRatio: "portrait", color: "from-purple-500 to-pink-600" },
   { id: 6, src: lombaVoliSarung, caption: "Lomba Voli Sarung", category: "Kegiatan Sekolah", aspectRatio: "portrait", color: "from-purple-500 to-pink-600" },
-  { id: 7, src: lombaHias2, caption: "Peak Day Agustusan #2", category: "Kegiatan Sekolah", aspectRatio: "landscape", color: "from-purple-500 to-pink-600" },
-  { id: 8, src: lombaHias3, caption: "Peak Day Agustusan #2", category: "Kegiatan Sekolah", aspectRatio: "landscape", color: "from-purple-500 to-pink-600" },
+  { id: 7, src: lombaHias2, caption: "Lomba Hias Kelas Agustusan #2", category: "Kegiatan Sekolah", aspectRatio: "landscape", color: "from-purple-500 to-pink-600" },
+  { id: 8, src: lombaHias3, caption: "Lomba Hias Kelas Agustusan #3", category: "Kegiatan Sekolah", aspectRatio: "landscape", color: "from-purple-500 to-pink-600" },
 ];
