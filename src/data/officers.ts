@@ -5,7 +5,6 @@ export interface Officer {
   igHandle: string;
 }
 
-// TODO: replace with real data
 export const ketua: Officer = { name: "Fadhil Dwi Nugroho", role: "Ketua Kelas", category: "lead", igHandle: "dfadhil14" };
 export const wakil: Officer = { name: "Akbar Ramadhan Yasid", role: "Wakil Ketua", category: "vice", igHandle: "akbarramadhanyasid" };
 
