@@ -42,7 +42,6 @@ import widiImg from '@/assets/students/widi.webp';
 import yesicaImg from '@/assets/students/yesica.webp';
 import farisImg from '@/assets/students/faris.webp';
 
-// TODO: replace with real data
 export const members: Member[] = [
   { id: 1, name: "Abi Waqqash", nis: "01", gender: "L", igHandle: "yoiki_4b111", avatarUrl: abiWaqqashImg },
   { id: 2, name: "Achmad Miftakhul Haq", nis: "02", gender: "L", igHandle: "achmad23m", avatarUrl: miftaImg },
