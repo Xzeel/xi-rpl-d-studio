@@ -7,8 +7,7 @@ interface BGMButtonProps {
 }
 
 export function BGMButton({ className = "" }: BGMButtonProps) {
-  // TODO: replace with actual BGM file at public/audio/bgm.mp3
-  const { isPlaying, toggle } = useBGM("/audio/bye.mp3");
+  const { isPlaying, toggle } = useBGM("/audio/whineinbrazil.mp3");
 
   return (
     <button
